@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import Footer from "../Footer"; 
+import Footer from "../Footer";
 
 function Home() {
     const [value, setValue] = useState(0); 
     const [count, setCount] = useState(0);
+    const [selectedColor, setSelectedColor] = useState("#000000"); 
 
     const handleEvent = (name) => {
         if (count < 3) {
@@ -45,8 +46,34 @@ function Home() {
                 Reset
             </button>
             <h1>Counter Value: {value}</h1>
+
             
-            {}
+            <div style={{ margin: "20px 0" }}>
+                <label htmlFor="colorPicker">Pick a Color: </label>
+                <input
+                    type="color"
+                    id="colorPicker"
+                    value={selectedColor}
+                    onChange={(e) => setSelectedColor(e.target.value)}
+                    style={{ marginLeft: "10px", cursor: "pointer" }}
+                />
+            </div>
+
+            
+            <div
+                style={{
+                    margin: "20px auto",
+                    padding: "20px",
+                    backgroundColor: selectedColor,
+                    color: "#fff",
+                    borderRadius: "8px",
+                    width: "50%",
+                    textAlign: "center",
+                }}
+            >
+                The background color of this box is: <strong>{selectedColor}</strong>
+            </div>
+
             <Footer />
         </div>
     );

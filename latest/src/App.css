@@ -40,3 +40,18 @@
 .read-the-docs {
   color: #888;
 }
+
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  margin: 0 15px;
+}
+
+nav a:hover {
+  color: blue;
+}
