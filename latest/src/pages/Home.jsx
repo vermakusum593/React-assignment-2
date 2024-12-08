@@ -2,34 +2,32 @@ import React, { useState } from "react";
 import Footer from "../Footer";
 
 function Home() {
-    const [value, setValue] = useState(0); 
+  
+    const initialCountValue = 0;
+    const initialSelectedColor = "#000000";
+
+    const [value, setValue] = useState(initialCountValue);
     const [count, setCount] = useState(0);
-    const [selectedColor, setSelectedColor] = useState("#000000"); 
+    const [selectedColor, setSelectedColor] = useState(initialSelectedColor);
 
     const handleEvent = (name) => {
         if (count < 3) {
-            setCount(count + 1); 
+            setCount((prevCount) => prevCount + 1); 
             console.log(`${name}, you clicked me ${count + 1} time/s`);
         } else {
             console.log(`${name}, stop clicking me`);
         }
     };
 
-    const Increment = () => {
-        setValue(value + 1); 
-    };
-
+    const Increment = () => setValue((prevValue) => prevValue + 1); 
     const Decrement = () => {
         if (value === 0) {
             alert("Value is less than 0");
         } else {
-            setValue(value - 1);
+            setValue((prevValue) => prevValue - 1); 
         }
     };
-
-    const Reset = () => {
-        setValue(0); 
-    };
+    const Reset = () => setValue(initialCountValue);
 
     return (
         <div style={{ textAlign: "center", padding: "20px" }}>
@@ -46,8 +44,6 @@ function Home() {
                 Reset
             </button>
             <h1>Counter Value: {value}</h1>
-
-            
             <div style={{ margin: "20px 0" }}>
                 <label htmlFor="colorPicker">Pick a Color: </label>
                 <input
@@ -59,7 +55,7 @@ function Home() {
                 />
             </div>
 
-            
+          
             <div
                 style={{
                     margin: "20px auto",
